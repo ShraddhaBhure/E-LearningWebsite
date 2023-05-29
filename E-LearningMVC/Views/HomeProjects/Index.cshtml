@@ -1,0 +1,51 @@
+﻿@model IEnumerable<C_Models.HomeProjects>
+
+<h2>Projects</h2>
+
+<p>
+    <a asp-action="Create">Create New Project</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Importance</th>
+            <th>Created By</th>
+            <th>Submission Date</th>
+            <th>Cover Image</th>
+            <th>Price</th>
+            <th>Project Category</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => project.Title)</td>
+            <td>@Html.DisplayFor(modelItem => project.Description)</td>
+            <td>@Html.DisplayFor(modelItem => project.Importance)</td>
+            <td>@Html.DisplayFor(modelItem => project.CreatedBy)</td>
+            <td>@Html.DisplayFor(modelItem => project.SubbmitDate)</td>
+            <td>
+                @if (!string.IsNullOrEmpty(project.CoverImage))
+                {
+                    <img src="~/images/@project.CoverImage" alt="Cover Image" style="width: 100px; height: 100px;" />
+                }
+                else
+                {
+                    <span>No Image</span>
+                }
+            </td>
+            <td>@Html.DisplayFor(modelItem => project.Price)</td>
+            <td>@Html.DisplayFor(modelItem => project.ProjectCategory)</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@project.ProjectId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@project.ProjectId">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

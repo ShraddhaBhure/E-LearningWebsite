@@ -1,0 +1,37 @@
+﻿@model IEnumerable<C_Models.OnlineClass>
+
+<h1>Online Classes</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Created By</th>
+            <th>Duration</th>
+            <th>Cover Image</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var onlineClass in Model)
+        {
+            <tr>
+                <td>@onlineClass.Title</td>
+                <td>@onlineClass.Description</td>
+                <td>@onlineClass.CreatedBy</td>
+                <td>@onlineClass.Duration</td>
+                <td><img src="~/images/@onlineClass.CoverImage" alt="Cover Image" style="max-width: 100px;" /></td>
+                <td>@onlineClass.Price</td>
+                <td>@onlineClass.CourseCategory</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@onlineClass.ClassId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@onlineClass.ClassId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Create">Create New Class</a>

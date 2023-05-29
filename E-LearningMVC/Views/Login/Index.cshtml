@@ -1,0 +1,26 @@
+﻿@model IEnumerable<C_Models.Login>
+
+<table>
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>User Role</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Userid</td>
+                <td>@item.UserName</td>
+                <td>@item.UserRole</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.Userid })">Edit</a> |
+                    <a href="@Url.Action("Delete", new { id = item.Userid })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

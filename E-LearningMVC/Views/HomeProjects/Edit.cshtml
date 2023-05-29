@@ -1,0 +1,53 @@
+﻿@model C_Models.HomeProjects
+
+<h2>Edit Project</h2>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" asp-for="ProjectId" />
+
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" asp-for="Title" />
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <input type="text" class="form-control" asp-for="Description" />
+    </div>
+    <div class="form-group">
+        <label>Importance</label>
+        <input type="text" class="form-control" asp-for="Importance" />
+    </div>
+    <div class="form-group">
+        <label>Created By</label>
+        <input type="text" class="form-control" asp-for="CreatedBy" />
+    </div>
+    <div class="form-group">
+        <label>Submission Date</label>
+        <input type="date" class="form-control" asp-for="SubbmitDate" />
+    </div>
+    @*<div class="form-group">
+            <label>Cover Image</label>
+            <input type="file" class="form-control-file" name="coverImage" />
+        </div>*@
+
+    <div class="form-group">
+        <label>Cover Image</label>
+        <input type="file" class="form-control-file" name="coverImage" />
+        @if (!string.IsNullOrEmpty(Model.CoverImage))
+        {
+            <div>
+                <img src="~/images/@Model.CoverImage" alt="Cover Image" style="width: 100px; height: 100px;" />
+            </div>
+        }
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input type="number" class="form-control" asp-for="Price" />
+    </div>
+    <div class="form-group">
+        <label>Project Category</label>
+        <input type="text" class="form-control" asp-for="ProjectCategory" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>

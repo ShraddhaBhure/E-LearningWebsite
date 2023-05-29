@@ -1,0 +1,31 @@
+﻿@model C_Models.Login
+
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title">Register</h1>
+
+        <form asp-action="Register">
+            <div class="form-group">
+                <label asp-for="UserName">Username:</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserPassword">Password:</label>
+                <input asp-for="UserPassword" class="form-control" type="password" />
+                <span asp-validation-for="UserPassword" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserRole">Role:</label>
+                <input asp-for="UserRole" class="form-control" />
+                <span asp-validation-for="UserRole" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

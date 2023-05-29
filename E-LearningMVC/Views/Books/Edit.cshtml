@@ -1,0 +1,41 @@
+﻿@model C_Models.BooksLibrary
+
+
+<h1>Edit Book</h1>
+
+<form asp-action="Edit" asp-route-id="@Model.BookId" enctype="multipart/form-data">
+    <input type="hidden" asp-for="BookId" />
+
+    <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" asp-for="Title" />
+    </div>
+    <div class="form-group">
+        <label>Author</label>
+        <input class="form-control" asp-for="Author" />
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" asp-for="Description"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Cover Image</label>
+        <input type="file" class="form-control-file" name="coverImage" />
+        @if (!string.IsNullOrEmpty(Model.CoverImage))
+        {
+            <div>
+                <img src="~/images/@Model.CoverImage" alt="Cover Image" style="width: 100px; height: 100px;" />
+            </div>
+        }
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input class="form-control" asp-for="Price" />
+    </div>
+    <div class="form-group">
+        <label>Category</label>
+        <input class="form-control" asp-for="BookCategory" />
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="Index">Back to List</a>
+</form>

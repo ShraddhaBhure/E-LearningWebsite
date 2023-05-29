@@ -1,0 +1,102 @@
+﻿@model C_Models.Login
+@*<style>
+        body {
+            /*     background-image: url('file:///D:\shraddha\MyProjects2023\WebsiteMedicalLibraryMVC\WebsiteMedicalLibraryMVC\wwwroot\Images\logo\flowerbackground.jpg');*/
+            background-image: url("https://motionarray.imgix.net/preview-774453-u5CLLYBgwRUPUBHh-large.jpg?w=660&q=60&fit=max&auto=format");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>*@
+<div class="card">
+    <div class="card-body">
+        <section class="vh-100">
+            <div class="container-fluid h-custom">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-md-9 col-lg-6 col-xl-5">
+                        @*<img src="https://img.republicworld.com/republic-prod/stories/promolarge/xhdpi/4vtjiqjivdno6ude_1643802002.jpeg" class="img-fluid" alt="Sample image">*@
+                        <img src="https://i5.walmartimages.com/asr/5402cc13-19ff-4c77-a902-918649b320ae_1.37ba054c22de93f2e62b03352948cc13.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" class="img-fluid" alt="Sample image">
+                    </div>
+                    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
+                        <form asp-action="Login" method="post">
+
+                            <br />
+                            <br />
+                            <div class="divider d-flex align-items-center my-4">
+                                <h2>Login Here</h2>
+                                @*<p class="text-center fw-bold mx-3 mb-0">Enter your Login Details</p>*@
+                            </div>
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <label asp-for="UserName">Username:</label>
+                                <input asp-for="UserName" class="form-control" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                            <!-- Password input -->
+
+                            <div class="form-outline mb-3">
+                                <label asp-for="UserPassword">Password:</label>
+                                <div class="input-group">
+                                    <input asp-for="UserPassword" class="form-control" type="password" />
+                                    <button type="button" class="btn btn-outline-secondary" id="showPasswordBtn">Show</button>
+                                </div>
+                                <span asp-validation-for="UserPassword" class="text-danger"></span>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <!-- Checkbox -->
+                                <div class="form-check mb-0">
+                                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                                    <label class="form-check-label" for="form2Example3">
+                                        Remember me
+                                    </label>
+                                </div>
+                                @*<a href="#!" class="text-body"></a>*@
+                                <br />
+
+                                <p>
+                                    <a asp-action="ResetPassword" class="link-danger">Forgot password?</a>
+                                </p>
+                            </div>
+                            <div class="text-center text-lg-start mt-4 pt-2">
+                                <div class="form-group">
+                                    <input type="submit" value="Login" class="btn btn-primary" />
+                                </div>
+                                <p class="small fw-bold mt-2 pt-1 mb-0">
+                                    Don't have an account? @*<a href="#!" class="link-danger">Register</a>*@
+                                <p>
+                                    <a asp-action="Create" class="link-danger">Register New</a>
+                                </p>
+
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+            @if (ViewBag.SuccessMessage != null)
+            {
+                <div class="alert alert-success">
+                    @ViewBag.SuccessMessage
+                </div>
+            }
+        </section>
+    </div>
+</div>
+<script>
+    document.getElementById("showPasswordBtn").addEventListener("click", function () {
+        var passwordInput = document.getElementById("UserPassword");
+        var showPasswordBtn = document.getElementById("showPasswordBtn");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            showPasswordBtn.textContent = "Hide";
+        } else {
+            passwordInput.type = "password";
+            showPasswordBtn.textContent = "Show";
+        }
+    });
+</script>
+

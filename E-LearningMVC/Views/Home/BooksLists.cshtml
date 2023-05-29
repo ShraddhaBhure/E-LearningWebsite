@@ -1,0 +1,35 @@
+﻿
+@model IEnumerable<C_Models.BooksLibrary>
+
+
+<div class="card-container">
+    @foreach (var book in Model)
+    {
+    <div class="card">
+        <div class="card-header">
+            <h3>@book.Title</h3>
+            <div class="card-image">
+                @if (!string.IsNullOrEmpty(book.CoverImage))
+                {
+                    <img src="~/images/@book.CoverImage" alt="Cover Image" />
+                }
+                else
+                {
+                    <span>No Image</span>
+                }
+            </div>
+        </div>
+        <div class="card-body">
+
+            <div class="card-details">
+                <p><strong>Author:</strong> @book.Author</p>
+                <p><strong>Price:</strong> @book.Price</p>
+                @*<p><strong>Category:</strong> @book.BookCategory</p>*@
+            </div>
+        </div> <div class="card-footer">
+            <a class="edit-link" asp-action="Details" asp-route-id="@book.BookId">View Details</a>
+        </div>
+
+    </div>
+    }
+</div>

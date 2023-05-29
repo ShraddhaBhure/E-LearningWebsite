@@ -1,0 +1,38 @@
+﻿@model IEnumerable<C_Models.OnlineClass>
+
+<div class="card-container">
+    @foreach (var book in Model)
+    {
+    <div class="card">
+        <div class="card-header">
+            <h3>@book.Title</h3>
+            <div class="card-image">
+                @if (!string.IsNullOrEmpty(book.CoverImage))
+                {
+                    <img src="~/images/@book.CoverImage" alt="Cover Image" />
+                }
+                else
+                {
+                    <span>No Image</span>
+                }
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="card-details">
+                <p><strong>Educator:</strong> @book.CreatedBy</p>
+                @*<p><strong>Description:</strong> @book.Description</p>*@
+                <p><strong>Price:</strong> @book.Price</p>
+                <p><strong>Duration:</strong> @book.Duration</p>
+            </div>
+        </div>
+        @*<div class="card-footer">
+            <a class="edit-link" asp-action="Edit" asp-route-id="@book.ClassId">Edit</a>
+            <a class="delete-link" asp-action="Delete" asp-route-id="@book.ClassId">Delete</a>
+        </div>*@
+
+        <div class="card-footer">
+            <a class="edit-link" asp-action="Details" asp-route-id="@book.ClassId">View Details</a>
+        </div>
+    </div>
+    }
+</div>

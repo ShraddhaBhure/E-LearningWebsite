@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Send Email";
+}
+
+<h1>Send Email</h1>
+
+<form method="post" action="/Email/SendEmail">
+    <div class="form-group">
+        <label for="recipient">Recipient:</label>
+        <input type="email" name="recipient" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="subject">Subject:</label>
+        <input type="text" name="subject" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="body">Body:</label>
+        <textarea name="body" class="form-control" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send Email</button>
+</form>

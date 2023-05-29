@@ -1,0 +1,81 @@
+﻿@model IEnumerable<C_Models.BooksLibrary>
+
+<h1>Books Library</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Description</th>
+                <th>Cover Image</th> 
+                <th>Price</th>
+                <th>Category</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>@book.Description</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(book.CoverImage))
+                        {
+                            <img src="~/images/@book.CoverImage" alt="Cover Image" style="width: 100px; height: 100px;" />
+                        }
+                        else
+                        {
+                            <span>No Image</span>
+                        }
+                    </td>
+                    <td>@book.Price</td>
+                    <td>@book.BookCategory</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@book.BookId">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@book.BookId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+@*<div class="card-container">
+    @foreach (var book in Model)
+    {
+        <div class="card">
+            <div class="card-header">
+                <h3>@book.Title</h3>
+            </div>
+            <div class="card-body">
+                <div class="card-image">
+                    @if (!string.IsNullOrEmpty(book.CoverImage))
+                    {
+                        <img src="~/images/@book.CoverImage" alt="Cover Image" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </div>
+                <div class="card-details">
+                    <p><strong>Author:</strong> @book.Author</p>
+                    <p><strong>Description:</strong> @book.Description</p>
+                    <p><strong>Price:</strong> @book.Price</p>
+                    <p><strong>Category:</strong> @book.BookCategory</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a class="edit-link" asp-action="Edit" asp-route-id="@book.BookId">Edit</a>
+                <a class="delete-link" asp-action="Delete" asp-route-id="@book.BookId">Delete</a>
+            </div>
+        </div>
+    }
+</div>*@
