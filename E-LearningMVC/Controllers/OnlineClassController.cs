@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
+
 
 namespace E_LearningMVC.Controllers
 {
@@ -15,10 +15,10 @@ namespace E_LearningMVC.Controllers
     {
         private readonly IOnlineClassRepository _repository;
         private readonly IWebHostEnvironment _webHostEnvironment;
-
-        public OnlineClassController(IOnlineClassRepository repository, IWebHostEnvironment webHostEnvironment)
+        private readonly INotyfService _notyf;
+        public OnlineClassController(IOnlineClassRepository repository, INotyfService notyf, IWebHostEnvironment webHostEnvironment)
         {
-            _repository = repository;
+            _repository = repository; _notyf = notyf;
             _webHostEnvironment = webHostEnvironment;
         }
 
@@ -52,6 +52,7 @@ namespace E_LearningMVC.Controllers
                 }
 
                 await _repository.AddClass(onlineClass);
+                _notyf.Success("Classe Added Sucessfully");
                 return RedirectToAction("Index");
             }
 
@@ -92,6 +93,7 @@ namespace E_LearningMVC.Controllers
                 }
 
                 await _repository.UpdateClass(onlineClass);
+                _notyf.Information(" Edited  Sucessfully ");
                 return RedirectToAction("Index");
             }
 
@@ -124,6 +126,7 @@ namespace E_LearningMVC.Controllers
             }
 
             await _repository.DeleteClass(id);
+            _notyf.Warning(" Deleted Sucessfully");
             return RedirectToAction("Index");
         }
     }

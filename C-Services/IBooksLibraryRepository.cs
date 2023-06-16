@@ -1,8 +1,5 @@
 ﻿using C_Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace C_Services
@@ -14,5 +11,7 @@ namespace C_Services
         Task AddBook(BooksLibrary book);
         Task UpdateBook(BooksLibrary book);
         Task DeleteBook(int bookId);
+        Task<IEnumerable<BooksLibrary>> SearchBooks(string searchTerm);
+        Task<BooksLibrary> GetRecentlyAddedBook();
     }
 }

@@ -1,8 +1,6 @@
 ﻿using C_Models;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 
@@ -10,10 +8,16 @@ namespace C_Data
 {
     public class myDbContext : DbContext
     {
+
         public myDbContext(DbContextOptions<myDbContext> options)
            : base(options)
         {
 
+        }
+      
+        public Task<Login> FirstOrDefaultAsync(Func<object, bool> p)
+        {
+            throw new NotImplementedException();
         }
         public DbSet<Login> Login { get; set; }
 
@@ -23,5 +27,8 @@ namespace C_Data
 
         public DbSet<BooksLibrary> BooksLibrary { get; set; }
         public DbSet<HomeProjects> HomeProjects { get; set; }
+        public DbSet<Feedback> Feedback { get; set; }
+        public DbSet<Article> Articles { get; set; }
     }
+
 }

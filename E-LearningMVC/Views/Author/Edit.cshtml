@@ -1,0 +1,56 @@
+﻿@model C_Models.Article
+
+<h1>Edit Article</h1>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" asp-for="ArticleID" />
+    <div class="form-group">
+        <label for="Type">Type:</label>
+        <input type="text" class="form-control" id="Type" name="Type" value="@Model.ArticleType">
+    </div>
+    <div class="form-group">
+        <label for="Title">Title:</label>
+        <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title">
+    </div>
+    <div class="form-group">
+        <label for="AuthorNames">Author Names:</label>
+        <input type="text" class="form-control" id="AuthorNames" name="AuthorNames" value="@Model.AuthorNames">
+    </div>
+    <div class="form-group">
+        <label for="Abstract">Abstract:</label>
+        <textarea class="form-control" id="Abstract" name="Abstract" rows="4">@Model.Abstract</textarea>
+    </div>
+    <div class="form-group">
+        <label for="Keywords">Keywords:</label>
+        <input type="text" class="form-control" id="Keywords" name="Keywords" value="@Model.Keywords">
+    </div>
+    <div class="form-group">
+        <label for="CoverImage">Cover Image:</label>
+        <input type="file" class="form-control-file" id="CoverImage" name="CoverImage">
+    </div>
+    <div class="form-group">
+        <label for="FileName">File Name:</label>
+        <input type="file" class="form-control-file" id="FileName" name="FileName">
+    </div>
+    <div class="form-group">
+        <label for="SubmissionDate">Submission Date:</label>
+        <input type="date" class="form-control" id="SubmissionDate" name="SubmissionDate" value="@Model.SubmissionDate.Equals("yyyy-MM-dd")">
+    </div>
+    <div class="form-group">
+        <label for="ConflictOfInterest">Conflict of Interest:</label>
+        <input type="text" class="form-control" id="ConflictOfInterest" name="ConflictOfInterest" value="@Model.ConflictOfInterest">
+    </div>
+    <div class="form-group">
+        <label for="EthicalClearance">Ethical Clearance:</label>
+        <input type="text" class="form-control" id="EthicalClearance" name="EthicalClearance" value="@Model.EthicalClearance">
+    </div>
+    <div class="form-group">
+        <label for="RegisteredTo">Registered To:</label>
+        <input type="text" class="form-control" id="RegisteredTo" name="RegisteredTo" value="@Model.RegisteredTo">
+    </div>
+    <div class="form-group">
+        <label for="Acknowledgements">Acknowledgements:</label>
+        <textarea class="form-control" id="Acknowledgements" name="Acknowledgements" rows="4">@Model.Acknowledgements</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>

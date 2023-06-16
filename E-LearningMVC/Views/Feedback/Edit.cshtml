@@ -1,0 +1,40 @@
+﻿@model C_Models.Feedback
+
+<h1>Edit Feedback</h1>
+
+<form asp-action="Edit" asp-route-id="@Model.Fid" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="ClientName">Client Name:</label>
+        <input asp-for="ClientName" class="form-control" />
+        <span asp-validation-for="ClientName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Profession">Profession:</label>
+        <input asp-for="Profession" class="form-control" />
+        <span asp-validation-for="Profession" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Course">Course:</label>
+        <input asp-for="Course" class="form-control" />
+        <span asp-validation-for="Course" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateAdded">Date Added:</label>
+        <input asp-for="DateAdded" class="form-control" />
+        <span asp-validation-for="DateAdded" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Details">Details:</label>
+        <input asp-for="Details" class="form-control" />
+        <span asp-validation-for="Details" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ClientImage">Client Image:</label>
+        <input asp-for="ClientImage" type="file" class="form-control-file" />
+        <span asp-validation-for="ClientImage" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <img src="~/images/@Model.ClientImage" width="100" height="100" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

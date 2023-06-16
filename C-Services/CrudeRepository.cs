@@ -5,13 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace C_Services
 {
-        public class CrudeRepository<TEntity> : ICrudeRepository<TEntity> where TEntity : class
+    public class CrudeRepository<TEntity> : ICrudeRepository<TEntity> where TEntity : class
         {
             private readonly myDbContext _dbContext;
             private readonly DbSet<TEntity> _dbSet;
@@ -26,9 +24,9 @@ namespace C_Services
             return _dbSet;
         }
         public async Task<TEntity> GetByIdAsync(Guid id)
-            {
+        {
                 return await _dbSet.FindAsync(id);
-            }
+        }
 
             public async Task<IEnumerable<TEntity>> GetAllAsync()
             {
@@ -74,6 +72,25 @@ namespace C_Services
                 await _dbContext.SaveChangesAsync();
             }
         }
+        public bool IsValidAdmin(string username, string password)
+        {
+            // Check if the username and password are valid
+            var user = _dbContext.Login.FirstOrDefault(u => u.UserName == username && u.UserPassword == password);
 
+            // Return true if the user is valid and has the UserRole set to "Admin"
+            if (user != null && user.UserRole == "Admin")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //public object GetByIdAsync(int userId)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

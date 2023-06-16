@@ -1,0 +1,68 @@
+﻿@model IEnumerable<C_Models.Article>
+
+<h2>Article Library</h2>
+
+<p>
+    @Html.ActionLink("Create New Article", "Create")
+</p>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cover Image</th>
+                <th>Article File</th>
+                <th>ArticleType</th>
+                <th>Title</th>
+                <th>Author Names </th>
+                <th>Submission Date</th>
+                <th>Registered To</th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var article in Model)
+            {
+                <tr>
+                    <td>
+                        @if (!string.IsNullOrEmpty(article.CoverImage))
+                        {
+                            <img src="~/images/@article.CoverImage" alt="Cover Image" style="width: 100px; height: 100px;" />
+                        }
+                        else
+                        {
+                            <span>No Image</span>
+                        }
+                    </td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(article.ArticleFileName))
+                        {
+                            <a href="@Url.Action("DownloadArticleFile", new { id = article.ArticleID })">Download</a>
+                        }
+                        else
+                        {
+                            <span>No File</span>
+                        }
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => article.ArticleType)</td>
+                    <td>@Html.DisplayFor(modelItem => article.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => article.AuthorNames)</td>
+                    <td>@Html.DisplayFor(modelItem => article.SubmissionDate)</td>
+                    <td>@Html.DisplayFor(modelItem => article.RegisteredTo)</td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = article.ArticleID }, new { @class = "btn btn-info btn-sm" })
+                        @Html.ActionLink("Edit", "Edit", new { id = article.ArticleID }, new { @class = "btn btn-primary btn-sm" })
+                        @Html.ActionLink("Delete", "Delete", new { id = article.ArticleID }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Are you sure you want to delete this article?');" })
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No articles found.</p>
+}

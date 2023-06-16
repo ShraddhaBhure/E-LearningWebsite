@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.33529.622
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-LearningMVC", "E-LearningMVC\E-LearningMVC.csproj", "{55706D1A-9B23-46DB-80AE-6BB83967178D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-LearningMVC", "E-LearningMVC\E-LearningMVC.csproj", "{55706D1A-9B23-46DB-80AE-6BB83967178D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C-Data", "C-Data\C-Data.csproj", "{355736E8-3B76-42FF-A72A-E22511051FD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C-Data", "C-Data\C-Data.csproj", "{355736E8-3B76-42FF-A72A-E22511051FD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C-Models", "C-Models\C-Models.csproj", "{B2A2CCA4-7930-4905-99A0-57A531767A5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C-Models", "C-Models\C-Models.csproj", "{B2A2CCA4-7930-4905-99A0-57A531767A5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C-Services", "C-Services\C-Services.csproj", "{45B7C718-DDB3-4D62-A069-DD6FA83ACA1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C-Services", "C-Services\C-Services.csproj", "{45B7C718-DDB3-4D62-A069-DD6FA83ACA1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

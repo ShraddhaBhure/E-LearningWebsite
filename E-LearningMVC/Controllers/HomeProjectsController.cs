@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using C_Models;
 using C_Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using AspNetCoreHero.ToastNotification.Abstractions;
 
 namespace E_LearningMVC.Controllers
 {
@@ -15,11 +14,13 @@ namespace E_LearningMVC.Controllers
     {
         private readonly IHomeProjectsRepository _repository;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly INotyfService _notyf;
 
-        public HomeProjectsController(IHomeProjectsRepository repository, IWebHostEnvironment webHostEnvironment)
+        public HomeProjectsController(IHomeProjectsRepository repository, INotyfService notyf, IWebHostEnvironment webHostEnvironment)
         {
             _repository = repository;
             _webHostEnvironment = webHostEnvironment;
+            _notyf = notyf;
         }
 
         public async Task<IActionResult> Index()
@@ -52,6 +53,7 @@ namespace E_LearningMVC.Controllers
                 }
 
                 await _repository.AddProject(project);
+                _notyf.Success("Project Added Sucessfully");
                 return RedirectToAction(nameof(Index));
             }
 
@@ -93,6 +95,7 @@ namespace E_LearningMVC.Controllers
                 }
 
                 await _repository.UpdateProject(project);
+                _notyf.Information("Project Edited Sucessfully ");
                 return RedirectToAction(nameof(Index));
             }
 
@@ -149,6 +152,8 @@ namespace E_LearningMVC.Controllers
             }
 
             await _repository.DeleteProject(projectId);
+            _notyf.Warning("Project Deleted Sucessfully");
+
             return RedirectToAction(nameof(Index));
         }
 

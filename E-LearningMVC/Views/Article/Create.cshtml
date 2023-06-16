@@ -1,0 +1,107 @@
+﻿@model C_Models.Article
+
+<h2>Create Article</h2>
+
+@using (Html.BeginForm("Create", "Article", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(model => model.ArticleType)
+        @Html.DropDownListFor(model => model.ArticleType, GetArticleTypeList(), "Select an Article Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ArticleType)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title)
+        @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Title)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AuthorNames)
+        @Html.TextBoxFor(model => model.AuthorNames, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.AuthorNames)
+    </div>
+    /////
+    ///
+    <div class="form-group">
+        @Html.LabelFor(model => model.AuthorNames)
+        @Html.TextBoxFor(model => model.AuthorNames, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.AuthorNames)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Abstract)
+        @Html.TextBoxFor(model => model.Abstract, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Abstract)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Keywords)
+        @Html.TextBoxFor(model => model.Keywords, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Keywords)
+    </div>
+
+
+
+
+    <div class="form-group">
+        <label for="coverImage">Cover Image:</label>
+        <input type="file" name="coverImage" id="coverImage" accept="image/*" />
+    </div>
+
+    <div class="form-group">
+        <label for="articleFile">Article File:</label>
+        <input type="file" name="articleFile" id="articleFile" accept=".pdf,.doc,.docx" />
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ConflictOfInterest)
+        @Html.TextBoxFor(model => model.ConflictOfInterest, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ConflictOfInterest)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.EthicalClearance)
+        @Html.TextBoxFor(model => model.EthicalClearance, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.EthicalClearance)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.RegisteredTo)
+        @Html.TextBoxFor(model => model.RegisteredTo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.RegisteredTo)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Acknowledgements)
+        @Html.TextBoxFor(model => model.Acknowledgements, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Acknowledgements)
+    </div>
+
+    <div class="form-group">
+        <label for="acceptCheckbox">
+            <input type="checkbox" name="acceptCheckbox" id="acceptCheckbox" required /> I accept the terms and conditions
+        </label>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+}
+
+@functions {
+    public static SelectList GetArticleTypeList()
+    {
+        var articleTypes = new[]
+        {
+            new SelectListItem { Value = "Published", Text = "Published" },
+            new SelectListItem { Value = "Manuscript", Text = "Manuscript" },
+            new SelectListItem { Value = "New Article", Text = "New Article" },
+            new SelectListItem { Value = "Released Article", Text = "Released Article" }
+        };
+
+        return new SelectList(articleTypes, "Value", "Text");
+    }
+}
+<script>
+    $(function () {
+        $('#acceptCheckbox').change(function () {
+            var isChecked = $(this).is(':checked');
+            $('#articleForm input[type="submit"]').prop('disabled', !isChecked);
+        });
+    });
+</script>

@@ -1,0 +1,41 @@
+﻿@*@model Microsoft.AspNetCore.Identity.IdentityUser*@
+@using Microsoft.AspNetCore.Identity
+@model C_Models.Login
+<!--<h2>User Details</h2>
+
+<div>
+    <h4>User Name: @Model.UserName</h4>
+    <p>UserPassword: @Model.UserPassword</p>-->
+    <!-- Add other properties you want to display -->
+<!--</div>
+
+<a asp-action="Index">Back to List</a>-->
+
+
+
+
+<h2>User Details</h2>
+
+<table>
+    <tr>
+        <td>User ID:</td>
+        <td>@Model.Userid</td>
+    </tr>
+    <tr>
+        <td>Username:</td>
+        <td>@Model.UserName</td>
+    </tr>
+    <tr>
+        <td>User Role:</td>
+        <td>@Model.UserRole</td>
+    </tr>
+    <tr>
+        <td>Reset Token:</td>
+        <td>@Model.ResetToken</td>
+    </tr>
+    <tr>
+        <td>Reset Token Expiry:</td>
+        <td>@Model.ResetTokenExpiry</td>
+    </tr>
+</table>
+

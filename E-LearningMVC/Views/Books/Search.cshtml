@@ -1,0 +1,41 @@
+﻿@model IEnumerable<C_Models.BooksLibrary>
+    <div>
+        <h2>Search Books</h2>
+
+        <form method="get" action="@Url.Action("Search", "Books")">
+            <div class="form-group">
+                <input type="text" name="searchTerm" class="form-control" placeholder="Enter search term" />
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <hr />
+
+        @if (Model.Any())
+        {
+            <h3>Search Results</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var book in Model)
+                    {
+                        <tr>
+                            <td>@book.Title</td>
+                            <td>@book.Author</td>
+                            <td>@book.Description</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No results found.</p>
+        }
+    </div>

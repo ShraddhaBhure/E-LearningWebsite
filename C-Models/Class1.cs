@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace C_Models
+﻿namespace C_Models
 {
     public class Class1
     {

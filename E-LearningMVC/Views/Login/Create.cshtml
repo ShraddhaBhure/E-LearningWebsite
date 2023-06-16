@@ -11,39 +11,76 @@
 <br />
 
 
-<div class="card">
-    <div class="card-body">
-        @using (Html.BeginForm("Create", "Login"))
-        {
-            @Html.AntiForgeryToken()
+<div class="container-xxl py-5">
+    <div class="row g-5">
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserName)
-                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.UserName)
-            </div>
+        <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserPassword)
-                @Html.TextBoxFor(model => model.UserPassword, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.UserPassword)
-            </div>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-body">
+                        @using (Html.BeginForm("Create", "Login"))
+                        {
+                            @Html.AntiForgeryToken()
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserRole)
-                @Html.TextBoxFor(model => model.UserRole, new { @class = "form-control" })
-            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UserName)
+                                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.UserName)
+                            </div>
 
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        }
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UserPassword)
+                                @Html.TextBoxFor(model => model.UserPassword, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.UserPassword)
+                            </div>
 
-        @if (ViewBag.SuccessMessage != null)
-        {
-            <div class="alert alert-success">
-                @ViewBag.SuccessMessage
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UserRole)
+                                @Html.TextBoxFor(model => model.UserRole, new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                        }
+
+                        @if (ViewBag.SuccessMessage != null)
+                        {
+                            <div class="alert alert-success">
+                                @ViewBag.SuccessMessage
+                            </div>
+                        }
+
+                    </div>
+                </div>
+                <script src="~/js/toastr.min.js"></script>
+                <script src="~/js/toastr.js"></script>
+                @{
+                    var successNotification = TempData["SuccessNotification"] as string;
+                    if (!string.IsNullOrEmpty(successNotification))
+                    {
+                        <script>
+            toastr.success("@successNotification");
+                        </script>
+                    }
+                }
+
             </div>
-        }
+        </div>
     </div>
 </div>
+ 
+<!-- About End -->
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/Theame/lib/wow/wow.min.js"></script>
+<script src="~/Theame/lib/easing/easing.min.js"></script>
+<script src="~/Theame/lib/waypoints/waypoints.min.js"></script>
+<script src="~/Theame/lib/owlcarousel/owl.carousel.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="~/Theame/js/main.js"></script>
+
+

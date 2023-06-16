@@ -1,0 +1,36 @@
+﻿@model C_Models.Article
+
+<h2>Edit Article</h2>
+
+@using (Html.BeginForm("Edit", "Article", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.ArticleID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title)
+        @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Title)
+    </div>
+
+    <!-- Other article properties -->
+
+    <div class="form-group">
+        <label for="coverImage">Cover Image:</label>
+        <input type="file" name="coverImage" id="coverImage" accept="image/*" />
+    </div>
+
+    <div class="form-group">
+        <label for="articleFile">Article File:</label>
+        <input type="file" name="articleFile" id="articleFile" accept=".pdf,.doc,.docx" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+}
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

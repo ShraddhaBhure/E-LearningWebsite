@@ -1,0 +1,33 @@
+﻿@model IEnumerable<C_Models.Article>
+
+<h1>Articles</h1>
+  <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ArticleType</th>
+            <th>Title</th>
+            <th>Author Names</th>
+            <th>Submission Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var article in Model)
+        {
+            <tr>
+                <td>@article.ArticleType</td>
+                <td>@article.Title</td>
+                <td>@article.AuthorNames</td>
+                <td>@article.SubmissionDate.Equals("yyyy-MM-dd")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@article.ArticleID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@article.ArticleID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@article.ArticleID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using C_Data;
 using C_Models;
@@ -44,5 +42,19 @@ public class BooksLibraryRepository : IBooksLibraryRepository
         var book = await _context.BooksLibrary.FindAsync(bookId);
         _context.BooksLibrary.Remove(book);
         await _context.SaveChangesAsync();
+    }
+    public async Task<IEnumerable<BooksLibrary>> SearchBooks(string searchTerm)
+    {
+        return await _context.BooksLibrary
+            .Where(b => EF.Functions.Like(
+                $"{b.Title} {b.Author} {b.Description}",
+                $"%{searchTerm}%"))
+            .ToListAsync();
+    }
+    public async Task<BooksLibrary> GetRecentlyAddedBook()
+    {
+        return await _context.Set<BooksLibrary>()
+            .OrderByDescending(b => b.BookId)
+            .FirstOrDefaultAsync();
     }
 }

@@ -1,90 +1,157 @@
 ﻿@model C_Models.Login
-@*<style>
-        body {
-            /*     background-image: url('file:///D:\shraddha\MyProjects2023\WebsiteMedicalLibraryMVC\WebsiteMedicalLibraryMVC\wwwroot\Images\logo\flowerbackground.jpg');*/
-            background-image: url("https://motionarray.imgix.net/preview-774453-u5CLLYBgwRUPUBHh-large.jpg?w=660&q=60&fit=max&auto=format");
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-    </style>*@
-<div class="card">
-    <div class="card-body">
-        <section class="vh-100">
-            <div class="container-fluid h-custom">
-                <div class="row d-flex justify-content-center align-items-center h-100">
-                    <div class="col-md-9 col-lg-6 col-xl-5">
-                        @*<img src="https://img.republicworld.com/republic-prod/stories/promolarge/xhdpi/4vtjiqjivdno6ude_1643802002.jpeg" class="img-fluid" alt="Sample image">*@
-                        <img src="https://i5.walmartimages.com/asr/5402cc13-19ff-4c77-a902-918649b320ae_1.37ba054c22de93f2e62b03352948cc13.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" class="img-fluid" alt="Sample image">
+
+
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                <div class="position-relative h-100">
+                    <img class="img-fluid position-absolute w-100 h-100" src="~/Theame/img/LoginE.PNG" alt="" style="object-fit: cover;">
+
+
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                <h6 class="section-title bg-white text-start text-primary pe-3">Login Here</h6>
+                <h3 class="mb-4">Enter your Login Details</h3>
+
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserName)
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserName)
                     </div>
-                    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
 
-                        <form asp-action="Login" method="post">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserPassword)
+                        @Html.PasswordFor(model => model.UserPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserPassword)
+                    </div>
 
-                            <br />
-                            <br />
-                            <div class="divider d-flex align-items-center my-4">
-                                <h2>Login Here</h2>
-                                @*<p class="text-center fw-bold mx-3 mb-0">Enter your Login Details</p>*@
-                            </div>
-                            <!-- Email input -->
-                            <div class="form-outline mb-4">
-                                <label asp-for="UserName">Username:</label>
-                                <input asp-for="UserName" class="form-control" />
-                                <span asp-validation-for="UserName" class="text-danger"></span>
-                            </div>
-                            <!-- Password input -->
+                    <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6LeRGW0mAAAAAB7D5_CjA8_6gLPp_TgqQnCkJ9o5"></div>
+                @Html.ValidationMessage("captcha")
+            </div>
 
-                            <div class="form-outline mb-3">
-                                <label asp-for="UserPassword">Password:</label>
-                                <div class="input-group">
-                                    <input asp-for="UserPassword" class="form-control" type="password" />
-                                    <button type="button" class="btn btn-outline-secondary" id="showPasswordBtn">Show</button>
-                                </div>
-                                <span asp-validation-for="UserPassword" class="text-danger"></span>
-                            </div>
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
 
-                            <div class="d-flex justify-content-between align-items-center">
-                                <!-- Checkbox -->
-                                <div class="form-check mb-0">
-                                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                                    <label class="form-check-label" for="form2Example3">
-                                        Remember me
-                                    </label>
-                                </div>
-                                @*<a href="#!" class="text-body"></a>*@
-                                <br />
 
-                                <p>
-                                    <a asp-action="ResetPassword" class="link-danger">Forgot password?</a>
-                                </p>
-                            </div>
-                            <div class="text-center text-lg-start mt-4 pt-2">
-                                <div class="form-group">
-                                    <input type="submit" value="Login" class="btn btn-primary" />
-                                </div>
-                                <p class="small fw-bold mt-2 pt-1 mb-0">
-                                    Don't have an account? @*<a href="#!" class="link-danger">Register</a>*@
-                                <p>
-                                    <a asp-action="Create" class="link-danger">Register New</a>
-                                </p>
+                    <button type="submit" class="btn btn-primary">Login</button>
 
-                            </div>
-                        </form>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="form-check mb-0">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                            <label class="form-check-label" for="form2Example3">
+                                Remember me
+                            </label>
+                        </div>
+
+                        <br />
+
+                        <p>
+                            <a asp-action="ResetPassword" class="link-danger">Forgot password?</a>
+                        </p>
+                    </div>
+                    <div class="text-center text-lg-start mt-4 pt-2">
+
+                        <p class="small fw-bold mt-2 pt-1 mb-0">
+                            Don't have an account?
+                            <a asp-action="Create" class="link-danger">Register New</a>
+                        </p>
 
                     </div>
+                }
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@*<div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100" src="~/Theame/img/LoginE.PNG" alt="" style="object-fit: cover;">
+
+
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">Login Here</h6>
+                    <h3 class="mb-4">Enter your Login Details</h3>
+                    <form asp-action="Login" method="post">
+                        <div class="form-outline mb-4">
+                            <label asp-for="UserName">Username:</label>
+                            <input asp-for="UserName" class="form-control" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-outline mb-3">
+                            <label asp-for="UserPassword">Password:</label>
+                            <div class="input-group">
+                                <input asp-for="UserPassword" class="form-control" type="password" />
+                                <button type="button" class="btn btn-outline-secondary" id="showPasswordBtn">Show</button>
+                            </div>
+                            <span asp-validation-for="UserPassword" class="text-danger"></span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="form-check mb-0">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                                <label class="form-check-label" for="form2Example3">
+                                    Remember me
+                                </label>
+                            </div>
+
+                            <br />
+
+                            <p>
+                                <a asp-action="ResetPassword" class="link-danger">Forgot password?</a>
+                            </p>
+                        </div>
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <div class="form-group">
+                                <input type="submit" value="Login" class="btn btn-primary" />
+                            </div>
+                            <p class="small fw-bold mt-2 pt-1 mb-0">
+                                Don't have an account?
+                                <a asp-action="Create" class="link-danger">Register New</a>
+                            </p>
+
+                        </div>
+
+                    </form>
 
                 </div>
 
             </div>
-            @if (ViewBag.SuccessMessage != null)
-            {
-                <div class="alert alert-success">
-                    @ViewBag.SuccessMessage
-                </div>
-            }
-        </section>
-    </div>
-</div>
+
+        </div>
+        @if (ViewBag.SuccessMessage != null)
+        {
+            <div class="alert alert-success">
+                @ViewBag.SuccessMessage
+            </div>
+        }
+
+
+
+
+
+
+    </div>*@
+
+<!-- Login End -->
+<!-- JavaScript Libraries -->
 <script>
     document.getElementById("showPasswordBtn").addEventListener("click", function () {
         var passwordInput = document.getElementById("UserPassword");
@@ -99,4 +166,22 @@
         }
     });
 </script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LeRGW0mAAAAAB7D5_CjA8_6gLPp_TgqQnCkJ9o5"></script>
+<script>
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6LeRGW0mAAAAAB7D5_CjA8_6gLPp_TgqQnCkJ9o5', { action: 'login' }).then(function (token) {
+            document.getElementById('g-recaptcha-response').value = token;
+        });
+    });
+</script>
 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/Theame/lib/wow/wow.min.js"></script>
+<script src="~/Theame/lib/easing/easing.min.js"></script>
+<script src="~/Theame/lib/waypoints/waypoints.min.js"></script>
+<script src="~/Theame/lib/owlcarousel/owl.carousel.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="~/Theame/js/main.js"></script>
