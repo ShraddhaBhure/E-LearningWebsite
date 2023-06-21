@@ -81,12 +81,7 @@ namespace E_LearningMVC.Controllers
 
         //    return false;
         //}
-        [HttpGet]
-        public IActionResult Userlogin()
-        {
-            return View();
-        }
-
+        
         //[HttpPost]
         //public async Task<IActionResult> Userlogin(Login model)
         //{
@@ -100,7 +95,7 @@ namespace E_LearningMVC.Controllers
         //            TempData["SuccessNotification"] = "Login successfull.";
         //            _notyf.Success("Success Notification");
 
-                    
+
         //            return RedirectToAction("Index", "Login");
         //        }
         //        // ViewBag.SuccessMessage = "Login created successfully.";
@@ -113,30 +108,30 @@ namespace E_LearningMVC.Controllers
         //}
 
 
-        //[HttpPost]
-        //public async Task<IActionResult> Login(Login model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = await _loginRepository.GetAll().SingleOrDefaultAsync(u => u.UserName == model.UserName && u.UserPassword == model.UserPassword);
+        [HttpPost]
+        public async Task<IActionResult> Login(Login model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _loginRepository.GetAll().SingleOrDefaultAsync(u => u.UserName == model.UserName && u.UserPassword == model.UserPassword);
 
-        //        if (user != null)
-        //        {
-        //            ViewBag.SuccessMessage = "Login  successfull.";
-        //            TempData["SuccessNotification"] = "Login successfull.";
-        //            _notyf.Success("Success Notification");
+                if (user != null)
+                {
+                    ViewBag.SuccessMessage = "Login  successfull.";
+                    TempData["SuccessNotification"] = "Login successfull.";
+                    _notyf.Success("Success Notification");
 
-        //            //  return RedirectToAction("Index", "Home");
-        //            return RedirectToAction("Index", "Login");
-        //        }
-        //        // ViewBag.SuccessMessage = "Login created successfully.";
-        //        ModelState.AddModelError("", "Invalid username or password");
-        //        _notyf.Error("Invalid username or password");
-        //    }
+                    //  return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Login");
+                }
+                // ViewBag.SuccessMessage = "Login created successfully.";
+                ModelState.AddModelError("", "Invalid username or password");
+                _notyf.Error("Invalid username or password");
+            }
 
 
-        //    return View(model);
-        //}
+            return View(model);
+        }
 
 
         //[HttpPost]
@@ -174,6 +169,11 @@ namespace E_LearningMVC.Controllers
         //    return View(model);
         //}
 
+        [HttpGet]
+        public IActionResult Userlogin()
+        {
+            return View();
+        }
 
 
         [HttpPost]

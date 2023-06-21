@@ -19,6 +19,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Office.Interop.Word" Version="12.0.4518.1014" />
+    <PackageReference Include="MSOffice.Interop" Version="12.0.4518" />
     <PackageReference Include="NToastNotify" Version="8.0.0" />
     <PackageReference Include="ReCaptcha-AspNet" Version="1.9.0" />
   </ItemGroup>
@@ -33,6 +35,7 @@
     <Folder Include="wwwroot\BooksImages\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\Article\" />
+    <Folder Include="wwwroot\ArticalImges\" />
   </ItemGroup>
 
 </Project>

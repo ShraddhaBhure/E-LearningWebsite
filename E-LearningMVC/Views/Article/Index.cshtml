@@ -39,7 +39,7 @@
                     <td>
                         @if (!string.IsNullOrEmpty(article.ArticleFileName))
                         {
-                            <a href="@Url.Action("DownloadArticleFile", new { id = article.ArticleID })">Download</a>
+                            <a href="@Url.Action("DownloadArticleFile", new { id = article.ArticleID })" class="btn btn-primary btn-sm">Download</a>
                         }
                         else
                         {

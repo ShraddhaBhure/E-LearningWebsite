@@ -29,6 +29,7 @@ namespace C_Data
         public DbSet<HomeProjects> HomeProjects { get; set; }
         public DbSet<Feedback> Feedback { get; set; }
         public DbSet<Article> Articles { get; set; }
+        public DbSet<ArticleUpload> ArticleUpload { get; set; }
     }
 
 }

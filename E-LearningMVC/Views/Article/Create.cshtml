@@ -49,6 +49,12 @@
     <div class="form-group">
         <label for="articleFile">Article File:</label>
         <input type="file" name="articleFile" id="articleFile" accept=".pdf,.doc,.docx" />
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["ErrorMessage"]
+            </div>
+        }
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.ConflictOfInterest)
@@ -81,6 +87,12 @@
     <div class="form-group">
         <input type="submit" value="Create" class="btn btn-primary" />
     </div>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
 }
 
 @functions {

@@ -1,0 +1,62 @@
+﻿@model C_Models.ArticleUpload
+
+<h2>Create Article</h2>
+
+@using (Html.BeginForm("Create", "ArticleUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        <label>Article Type:</label>
+        @Html.DropDownListFor(model => model.ArticleType, new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Original Article", Value = "Original Article" },
+            new SelectListItem { Text = "Review Article", Value = "Review Article" },
+            new SelectListItem { Text = "Rejected Article", Value = "Rejected Article" },
+            new SelectListItem { Text = "Published Article", Value = "Published Article" }
+        }, "Select Article Type")
+    </div>
+
+    <div>
+        <label>Title:</label>
+        @Html.TextBoxFor(model => model.Title)
+    </div>
+
+    <div>
+        <label>Author Names:</label>
+        @Html.TextBoxFor(model => model.AuthorNames)
+    </div>
+
+    <div>
+        <label>Upload Article File:</label>
+        <input type="file" name="file" id="file" accept=".pdf, .doc, .docx">
+    </div>
+
+    <div>
+        <label>Respective Issue:</label>
+        @Html.DropDownListFor(model => model.RespectiveIssue, new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Vol2", Value = "Vol2" },
+            new SelectListItem { Text = "Vol3", Value = "Vol3" },
+            new SelectListItem { Text = "Vol4", Value = "Vol4" },
+            new SelectListItem { Text = "Vol7", Value = "Vol7" }
+        }, "Select Respective Issue")
+    </div>
+
+    <div>
+        <label>Page No:</label>
+        @Html.TextBoxFor(model => model.PageNo)
+    </div>
+
+    <div>
+        <label>Manuscript No:</label>
+        @Html.TextBoxFor(model => model.ManuscriptNo)
+    </div>
+
+    <div>
+        <label>Submission Date:</label>
+        @Html.TextBoxFor(model => model.SubmissionDate, new { type = "date" })
+    </div>
+
+    <div>
+        <input type="submit" value="Create">
+    </div>
+}
