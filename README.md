@@ -13,7 +13,7 @@ Applied Features:
 7. File Upload / Download /Convert.
 8. Admin user Dashboard 
 9. Add to Cart System
-10. Get logged user name with date time and IP Address
+10. Get logged user's details with date time and IP Address
 11. Actions: Insert Update, Delete, Details, Recently Added Data.
 
 
