@@ -1,0 +1,99 @@
+﻿@model C_Models.IssueMaster
+
+<h1>Create IssueMaster</h1>
+
+@using (Html.BeginForm("Create", "Issue", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IssueName)
+        @Html.TextBoxFor(model => model.IssueName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.IssueName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Display1Type)
+        @Html.DropDownListFor(model => model.Display1Type, new SelectList(ViewBag.Display1Types), "Select Display1 Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Display1Type)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Display2Type)
+        @Html.DropDownListFor(model => model.Display2Type, new SelectList(ViewBag.Display2Types), "Select Display2 Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Display2Type)
+    </div>
+
+    <!-- Other form fields -->
+    <div class="form-group">
+        @Html.LabelFor(model => model.Display1Title)
+        @Html.TextBoxFor(model => model.Display1Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Display1Title)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Display2Title)
+        @Html.TextBoxFor(model => model.Display2Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Display2Title)
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Display1Author)
+        @Html.TextBoxFor(model => model.Display1Author, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Display1Author)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Display2Author)
+        @Html.TextBoxFor(model => model.Display2Author, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Display2Author)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.IssueDescription)
+        @Html.TextBoxFor(model => model.IssueDescription, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.IssueDescription)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Frontimage)
+        <input type="file" class="form-control-file" name="frontImageFile" />
+        @Html.ValidationMessageFor(model => model.Frontimage)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Filename)
+        <input type="file" class="form-control-file" name="pdfFile" />
+        @Html.ValidationMessageFor(model => model.Filename)
+    </div>
+
+
+
+    <div>
+        <label>Submission Date:</label>
+        @Html.TextBoxFor(model => model.IssueDate, new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(model => model.IssueDate)
+    </div>
+
+    @*<div class="form-group">
+        @Html.LabelFor(model => model.IssueDate)
+        <div class="input-group date">
+            @Html.TextBoxFor(model => model.IssueDate, new { @class = "form-control datepicker", autocomplete = "off" })
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+        @Html.ValidationMessageFor(model => model.IssueDate)
+    </div>*@
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+}
+
+@*@section scripts {*@
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $(".datepicker").datepicker();
+    });
+</script>
+@*}*@

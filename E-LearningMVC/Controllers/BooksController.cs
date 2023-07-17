@@ -132,7 +132,7 @@ public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (string.IsNullOrEmpty(searchTerm))
             {
-                // If the search term is empty, redirect to the index or show an error message
+          
                 _notyf.Information("Book Not Found ");
                 return RedirectToAction("Index");
             }

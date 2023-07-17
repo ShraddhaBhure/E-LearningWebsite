@@ -11,6 +11,9 @@ using AspNetCoreHero.ToastNotification.Abstractions;
 using C_Models;
 using C_Data;
 using System.Linq;
+using Microsoft.Office.Interop.Word;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 
 namespace E_LearningMVC.Controllers
 {
@@ -111,7 +114,7 @@ namespace E_LearningMVC.Controllers
             return View(article);
         }
 
-       
+
         ////////////[HttpPost]
         ////////////public async Task<IActionResult> Create(Article article, IFormFile coverImage, IFormFile articleFile)
         ////////////{
@@ -226,7 +229,7 @@ namespace E_LearningMVC.Controllers
             }
 
             await _repository.DeleteArticle(id);
-            _notyf.Warning("Article Deleted Successfully");
+          
             return RedirectToAction("Index");
         }
         

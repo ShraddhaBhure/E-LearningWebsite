@@ -1,0 +1,43 @@
+﻿@model C_Models.ArticleUpload
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create Article</h2>
+
+@using (Html.BeginForm("Articalupload", "ArticleUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @*<div class="form-group">
+        @Html.LabelFor(m => m.ArticleType)
+        @Html.DropDownListFor(m => m.ArticleType, Model.ArticleTypeList, "Select Article Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ArticleType)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.RespectiveIssue)
+        @Html.DropDownListFor(m => m.RespectiveIssue, Model.RespectiveIssueList, "Select Respective Issue", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.RespectiveIssue)
+    </div>*@
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Title)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.AuthorNames)
+        @Html.TextBoxFor(m => m.AuthorNames, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.AuthorNames)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.UploadArticleFile)
+        <input type="file" name="file" class="form-control-file" />
+        @Html.ValidationMessageFor(m => m.UploadArticleFile)
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+}

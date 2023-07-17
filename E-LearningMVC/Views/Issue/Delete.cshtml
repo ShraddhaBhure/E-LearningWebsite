@@ -1,0 +1,21 @@
+﻿@model C_Models.IssueMaster
+
+<h1>Delete IssueMaster</h1>
+
+<h3>Are you sure you want to delete this record?</h3>
+<div>
+    <h4>Issue ID: @Model.IssueID</h4>
+    <h4>Issue Name: @Model.IssueName</h4>
+    <!-- Display other fields here -->
+</div>
+@using (Html.BeginForm("Delete", "IssueMaster", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.IssueID)
+
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}

@@ -30,6 +30,8 @@ namespace C_Data
         public DbSet<Feedback> Feedback { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<ArticleUpload> ArticleUpload { get; set; }
+
+        public DbSet<IssueMaster> IssueMaster { get; set; }
     }
 
 }

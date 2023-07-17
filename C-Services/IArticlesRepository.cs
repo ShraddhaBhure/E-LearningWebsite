@@ -11,8 +11,6 @@ namespace C_Services
         Task AddArticle(Article article);
         Task UpdateArticle(Article article);
         Task DeleteArticle(int articleId);
-     //   Task<IEnumerable<Article>> SearchArticles(string searchTerm);
         Task<Article> GetRecentlyAddedArticle();
-      //  Task<Article> DownloadArticleFile(int articleId);
-    }
+       }
 }

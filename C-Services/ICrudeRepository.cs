@@ -16,7 +16,7 @@ namespace C_Services
             Task DeleteAsync(Guid id);
            Task SaveImageAsync(Guid id, IFormFile image);
           bool IsValidAdmin(string userName, string password);
-        //object GetByIdAsync(int userId);
+       
     }
 
 }

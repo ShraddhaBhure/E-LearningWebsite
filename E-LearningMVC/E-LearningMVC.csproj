@@ -10,6 +10,7 @@
     <PackageReference Include="AspNetCoreCompatibility" Version="1.1.0" />
     <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
     <PackageReference Include="CaptchaMvc.Mvc5" Version="1.5.0" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.0" />
@@ -23,6 +24,7 @@
     <PackageReference Include="MSOffice.Interop" Version="12.0.4518" />
     <PackageReference Include="NToastNotify" Version="8.0.0" />
     <PackageReference Include="ReCaptcha-AspNet" Version="1.9.0" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +38,8 @@
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\Article\" />
     <Folder Include="wwwroot\ArticalImges\" />
+    <Folder Include="wwwroot\IssuesImage\" />
+    <Folder Include="wwwroot\IssuesFiles\" />
   </ItemGroup>
 
 </Project>

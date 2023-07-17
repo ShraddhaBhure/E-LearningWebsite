@@ -95,6 +95,11 @@ namespace E_LearningMVC
             services.AddScoped<IOnlineClassRepository, OnlineClassRepository>();
             services.AddScoped<IFeedbackRepository, FeedbackRepository>();
             services.AddScoped<IArticlesRepository, ArticlesRepository>();
+            services.AddScoped<IIssueMasterRepository, IssueMasterRepository>();
+
+
+
+
             //  services.AddScoped<INotificationRepository, NotificationRepository>();
             //services.AddHostedService<Worker>();
             //services.AddSingleton<IEmailService, EmailService>(); // Add your email service implementation

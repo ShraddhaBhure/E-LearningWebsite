@@ -1,0 +1,52 @@
+﻿@model IEnumerable<C_Models.IssueMaster>
+
+<h1>IssueMaster Index</h1>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Issue ID</th>
+            <th>Issue Name</th>
+            <th>Display1 Type</th>
+            <th>Display2 Type</th>
+            <th>Issue Description</th>
+            <th>Front Image</th>
+            <th>IP Address</th>
+            <th>Issue Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.IssueID</td>
+            <td>@item.IssueName</td>
+            <td>@item.Display1Type</td>
+            <td>@item.Display2Type</td>
+            <td>@item.IssueDescription</td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.Frontimage))
+                {
+                    <img src="~/IssuesImage/@item.Frontimage" alt="Front Image" style="width: 100px; height: 100px;" />
+                }
+                else
+                {
+                    <span>No Image</span>
+                }
+            </td>
+            <td>@item.IpAddress</td>
+            <td>@item.IssueDate</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IssueID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IssueID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IssueID })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

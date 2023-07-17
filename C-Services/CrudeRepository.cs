@@ -88,9 +88,5 @@ namespace C_Services
             }
         }
 
-        //public object GetByIdAsync(int userId)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

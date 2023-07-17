@@ -1,77 +1,18 @@
-﻿@model C_Models.ArticleUpload
+﻿@*@model C_Models.GetIssuesData
 
-<h2>Create Article</h2>
-
-
-<p>
-    <a asp-action="Articalupload">Artical upload New</a>
-</p>
+    @Html.DropDownListFor(model => model.Display1Types, new SelectList(Model.Display1Types), "Select Display1 Type", new { @class = "form-control" })
+    @Html.DropDownListFor(model => model.Display2Types, new SelectList(Model.Display2Types), "Select Display2 Type", new { @class = "form-control" })*@
 
 
+@model C_Models.ArticleUpload
 
-@*@using (Html.BeginForm("Create", "ArticleUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <div>
-            <label>Article Type:</label>
-            @Html.DropDownListFor(model => model.ArticleType, new List<SelectListItem>
-            {
-                new SelectListItem { Text = "Original Article", Value = "Original Article" },
-                new SelectListItem { Text = "Review Article", Value = "Review Article" },
-                new SelectListItem { Text = "Rejected Article", Value = "Rejected Article" },
-                new SelectListItem { Text = "Published Article", Value = "Published Article" }
-            }, "Select Article Type")
-        </div>
-
-        <div>
-            <label>Title:</label>
-            @Html.TextBoxFor(model => model.Title)
-        </div>
-
-        <div>
-            <label>Author Names:</label>
-            @Html.TextBoxFor(model => model.AuthorNames)
-        </div>
-
-        <div>
-            <label>Upload Article File:</label>
-            <input type="file" name="file" id="file" accept=".pdf, .doc, .docx">
-        </div>
-
-        <div>
-            <label>Respective Issue:</label>
-            @Html.DropDownListFor(model => model.RespectiveIssue, new List<SelectListItem>
-            {
-                new SelectListItem { Text = "Vol2", Value = "Vol2" },
-                new SelectListItem { Text = "Vol3", Value = "Vol3" },
-                new SelectListItem { Text = "Vol4", Value = "Vol4" },
-                new SelectListItem { Text = "Vol7", Value = "Vol7" }
-            }, "Select Respective Issue")
-        </div>
-
-        <div>
-            <label>Page No:</label>
-            @Html.TextBoxFor(model => model.PageNo)
-        </div>
-
-        <div>
-            <label>Manuscript No:</label>
-            @Html.TextBoxFor(model => model.ManuscriptNo)
-        </div>
-
-        <div>
-            <label>Submission Date:</label>
-            @Html.TextBoxFor(model => model.SubmissionDate, new { type = "date" })
-        </div>
-
-        <div>
-            <input type="submit" value="Create">
-        </div>
-    }*@
-
-
-@using (Html.BeginForm("Create", "ArticleUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "ArticleUploadController", FormMethod.Post))
 {
-    @*<div class="form-group">
+    @Html.DropDownListFor(model => model.Display1Types, new SelectList(Model.Display1Types), "Select Display1 Type", new { @class = "form-control" })
+    @Html.DropDownListFor(model => model.Display2Types, new SelectList(Model.Display2Types), "Select Display2 Type", new { @class = "form-control" })
+
+    @*<button type="submit" class="btn btn-primary">Create</button>*@
+    <div class="form-group">
         @Html.LabelFor(model => model.ArticleType, htmlAttributes: new { @class = "control-label" })
         @Html.DropDownListFor(model => model.ArticleType, new SelectList(Model.Display1Types), "Select Display1 Type", new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.ArticleType, "", new { @class = "text-danger" })
@@ -81,7 +22,7 @@
         @Html.LabelFor(model => model.RespectiveIssue, htmlAttributes: new { @class = "control-label" })
         @Html.DropDownListFor(model => model.RespectiveIssue, new SelectList(Model.Display2Types), "Select Display2 Type", new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.RespectiveIssue, "", new { @class = "text-danger" })
-    </div>*@
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })

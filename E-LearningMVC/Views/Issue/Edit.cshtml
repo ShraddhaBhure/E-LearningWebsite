@@ -1,0 +1,51 @@
+﻿@model C_Models.IssueMaster
+
+<h1>Edit IssueMaster</h1>
+
+@using (Html.BeginForm("Edit", "IssueMaster", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.IssueID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IssueName)
+        @Html.TextBoxFor(model => model.IssueName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.IssueName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Display1Type)
+        @Html.DropDownListFor(model => model.Display1Type, new SelectList(ViewBag.Display1Types), "Select Display1 Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Display1Type)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Display2Type)
+        @Html.DropDownListFor(model => model.Display2Type, new SelectList(ViewBag.Display2Types), "Select Display2 Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Display2Type)
+    </div>
+
+    <!-- Other form fields -->
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Frontimage)
+        <input type="file" name="frontImageFile" />
+        @Html.ValidationMessageFor(model => model.Frontimage)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Filename)
+        <input type="file" name="pdfFile" />
+        @Html.ValidationMessageFor(model => model.Filename)
+    </div>
+    <div>
+        <label>Submission Date:</label>
+        @Html.TextBoxFor(model => model.IssueDate, new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(model => model.IssueDate)
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+}
