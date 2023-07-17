@@ -1,7 +1,8 @@
 # E-LearningWebsite
 This is  MVC Core Project.
 Architecture built with a repository pattern, Generic repository pattern using Entity framework core & SQL Server Database.
-Features:
+
+Applied Features:
 1. Password Forget/Reset.
 2.ASP.NET Core Identity Manages users, passwords, profile data, roles, claims, tokens, email confirmation, and more
 4. Google ReCaptcha
